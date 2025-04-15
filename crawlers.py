@@ -13,6 +13,8 @@ import os
 import undetected_chromedriver as uc
 import douyin_video
 
+from cookie_helper import load_cookies_to_header
+
 config = configparser.ConfigParser()
 config.read('config.ini', encoding='utf-8')
 crawlers_config = config['Crawlers']
@@ -21,7 +23,6 @@ path_config = config['Path']
 MAX_THREAD = int(crawlers_config['Max_thread'])
 # tiktok douyin 关键字搜索视频结果分页,最多为3
 MAX_PAGE = int(crawlers_config['Max_page'])
-
 
 class Crawlers(object):
     def __init__(self):
@@ -389,7 +390,7 @@ class Crawlers(object):
     def youtube_search_video(self, search_keywords):
         url = 'https://www.youtube.com/youtubei/v1/search?key=AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8&prettyPrint=false'
         headers = {
-            'cookie': '__Secure-1PAPISID=34K7hiPdY1FWstRr/AxeA0DH8eu8sydxU_; __Secure-1PSID=g.a000vwix4nL8yEMxa2dnpmZ-V-wRcajf_5r-nW-8fKSBipcU3qsj8EkDdkguEUGysxtdjC0v1QACgYKAX4SARESFQHGX2Milm6vwD9C2GTZpbuCiwv5bRoVAUF8yKqc1yKn3x5U_vIlTY_Iq8ft0076; __Secure-1PSIDCC=AKEyXzU7vNV0PRoxhI8dacN74mWXZb3V22HebYuK0mV5jmoISTVT4X_PNjvz95BbQF6hiMbpYg; __Secure-1PSIDTS=sidts-CjEB7pHptW1pBzWwPV1h1tj7F-iJxigdSouM28lIkPTsgPbA7jEav8ce5GHbE8YvcWEMEAA; __Secure-3PAPISID=34K7hiPdY1FWstRr/AxeA0DH8eu8sydxU_; __Secure-3PSID=g.a000vwix4nL8yEMxa2dnpmZ-V-wRcajf_5r-nW-8fKSBipcU3qsjliNk2BdGmkYUtNr-xD04kAACgYKARoSARESFQHGX2Mi85l6cgzCy5wp6r_5305-bxoVAUF8yKod0sdlvdDOaKjRqRfjgc4c0076; __Secure-3PSIDCC=AKEyXzXmi9OG13BNNk5R86yYXPGTVA9cTManCUHnUKXh10oVMMvSO-R6CeVyA6845OVG35JoifM; __Secure-3PSIDTS=sidts-CjEB7pHptW1pBzWwPV1h1tj7F-iJxigdSouM28lIkPTsgPbA7jEav8ce5GHbE8YvcWEMEAA; _ga=GA1.1.1170473490.1740381873; _ga_VCGEPY40VB=GS1.1.1740381872.1.1.1740381900.32.0.0; _gcl_au=1.1.853574707.1740381873; APISID=FpJ9kBCDpA4gkCfL/AjUopxc58gMcw2b0H; HSID=AZuPbFRjMQirZySy7; LOGIN_INFO=AFmmF2swRQIgFwhajHuKmDmRQmOcahVcbFHPXjC8jN64ynZnpANXkNQCIQChfpOQ0NwAcj3KdpC35D06HydPPAZcYNubOHfFuw0bpg:QUQ3MjNmelRTTFVjb0drSDg1M01ybGtRQXhmcW9',
+            'cookie':load_cookies_to_header(),
             'authority': 'www.youtube.com',
             'accept': '*/*',
             'accept-language': 'zh-CN,zh;q=0.9',
@@ -492,7 +493,7 @@ class Crawlers(object):
 
     def youtube_video_info(self, video_id):
         headers = {
-            'cookie': '__Secure-1PAPISID=34K7hiPdY1FWstRr/AxeA0DH8eu8sydxU_; __Secure-1PSID=g.a000vwix4nL8yEMxa2dnpmZ-V-wRcajf_5r-nW-8fKSBipcU3qsj8EkDdkguEUGysxtdjC0v1QACgYKAX4SARESFQHGX2Milm6vwD9C2GTZpbuCiwv5bRoVAUF8yKqc1yKn3x5U_vIlTY_Iq8ft0076; __Secure-1PSIDCC=AKEyXzU7vNV0PRoxhI8dacN74mWXZb3V22HebYuK0mV5jmoISTVT4X_PNjvz95BbQF6hiMbpYg; __Secure-1PSIDTS=sidts-CjEB7pHptW1pBzWwPV1h1tj7F-iJxigdSouM28lIkPTsgPbA7jEav8ce5GHbE8YvcWEMEAA; __Secure-3PAPISID=34K7hiPdY1FWstRr/AxeA0DH8eu8sydxU_; __Secure-3PSID=g.a000vwix4nL8yEMxa2dnpmZ-V-wRcajf_5r-nW-8fKSBipcU3qsjliNk2BdGmkYUtNr-xD04kAACgYKARoSARESFQHGX2Mi85l6cgzCy5wp6r_5305-bxoVAUF8yKod0sdlvdDOaKjRqRfjgc4c0076; __Secure-3PSIDCC=AKEyXzXmi9OG13BNNk5R86yYXPGTVA9cTManCUHnUKXh10oVMMvSO-R6CeVyA6845OVG35JoifM; __Secure-3PSIDTS=sidts-CjEB7pHptW1pBzWwPV1h1tj7F-iJxigdSouM28lIkPTsgPbA7jEav8ce5GHbE8YvcWEMEAA; _ga=GA1.1.1170473490.1740381873; _ga_VCGEPY40VB=GS1.1.1740381872.1.1.1740381900.32.0.0; _gcl_au=1.1.853574707.1740381873; APISID=FpJ9kBCDpA4gkCfL/AjUopxc58gMcw2b0H; HSID=AZuPbFRjMQirZySy7; LOGIN_INFO=AFmmF2swRQIgFwhajHuKmDmRQmOcahVcbFHPXjC8jN64ynZnpANXkNQCIQChfpOQ0NwAcj3KdpC35D06HydPPAZcYNubOHfFuw0bpg:QUQ3MjNmelRTTFVjb0drSDg1M01ybGtRQXhmcW9',
+            'cookie': load_cookies_to_header(),
             'referer': 'https://www.youtube.com/results?search_query=jk%E7%BE%8E%E5%A5%B3',
             'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.84 Safari/537.36'
         }
