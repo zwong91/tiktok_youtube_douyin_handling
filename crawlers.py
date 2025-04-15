@@ -498,45 +498,7 @@ class Crawlers(object):
             'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.84 Safari/537.36'
         }
         url = f'https://www.youtube.com/watch?v={video_id}'
-        response = self.simple_get(url=url, headers=headers)
-        if response is not None:
-            json_str = re.findall('var ytInitialPlayerResponse = (.*?);var', response)[0]
-            json_data = json.loads(json_str)
-            video_url = None
-            audio_url = None
-            new_list = []
-            for one in json_data['streamingData']['adaptiveFormats']:
-                if 'url' in one.keys():
-                    new_list.append(one)
-                else:
-                    continue
-            if len(new_list) > 0:
-                video_url = new_list[0]['url']
-                for data in new_list:
-                    if 'height' in data.keys():
-                        if data['height'] == 1080:
-                            video_url = data['url']
-                            break
-                        else:
-                            continue
-                    else:
-                        continue
-                audio_url = new_list[-1]['url']
-                for i in range(len(new_list) - 1, -1, -1):
-                    if 'audio' in new_list[i]['mimeType'] and 'LOW' in new_list[i]['audioQuality']:
-                        audio_url = new_list[i]['url']
-                        break
-                    else:
-                        continue
-                print(f'youtube video_url: {video_url}\naudio_url: {audio_url}')
-                video_streaming_data = json_data['streamingData']['adaptiveFormats']
-                return {'video_url': video_url, 'audio_url': audio_url}
-            else:
-                return {'video_url': video_url, 'audio_url': audio_url}
-
-        else:
-            print(f'获取 {video_id} 详情失败!!!')
-            return {'video_url': None, 'audio_url': None}
+        return {'video_url': url, 'audio_url': None}
 
     def douyin_search_video(self, search_keywords, offset=0):
         keywords = search_keywords

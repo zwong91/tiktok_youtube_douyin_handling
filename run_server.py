@@ -167,25 +167,35 @@ def download_video():
     if os.path.exists(file_path):
         print(f'下载: {video_id} 无需下载')
         return video_name
-    else:
-        # video_url = video_url
-        video_url = video_url.replace('https://', 'http://')
-        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'}
-        for i in range(3):
-            try:
-                if 'tiktok' in video_url or 'youtube' in video_url or 'google' in video_url:
-                    resp = requests.get(url=video_url, headers=headers)
-                else:
-                    resp = requests.get(url=video_url, headers=headers)
-                if resp.status_code < 300:
-                    with open(file_path, 'wb')as f:
-                        f.write(resp.content)
-                    print(f'下载: {video_id} 成功! ')
-                    return video_name
-                else:
-                    continue
-            except:
-                print(f'下载: {video_id} 失败: {traceback.format_exc()}')
+    try:
+        # 设置yt-dlp命令
+        cmd = [
+            'yt-dlp',
+            '--cookies', 'cookies.txt',
+            '--output', file_path,
+            video_url
+        ]
+        
+        # 执行命令
+        process = subprocess.Popen(
+            cmd,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            universal_newlines=True
+        )
+        
+        # 获取输出
+        stdout, stderr = process.communicate()
+        
+        if process.returncode == 0:
+            print(f'下载: {video_id} 成功!')
+            return video_name
+        else:
+            print(f'下载失败: {stderr}')
+            return '下载失败!'
+            
+    except Exception as e:
+        print(f'下载: {video_id} 失败: {str(e)}')
         return '下载失败!'
 
 
