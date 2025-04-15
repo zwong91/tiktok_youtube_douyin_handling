@@ -501,6 +501,7 @@ class Crawlers(object):
         if response is not None:
             json_str = re.findall('var ytInitialPlayerResponse = (.*?);var', response)[0]
             json_data = json.loads(json_str)
+            print(f'json_data: {json_data}')
             video_url = None
             audio_url = None
             new_list = []
