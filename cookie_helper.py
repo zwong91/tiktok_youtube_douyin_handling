@@ -1,5 +1,5 @@
 import json
-from http.cookies import SimpleCookie
+from datetime import datetime
 
 def load_cookies_to_header():
     try:
@@ -17,27 +17,31 @@ def load_cookies_to_header():
         return ""
 
 def json_to_netscape(json_file, output_file):
+    # 读取JSON格式的cookie
     with open(json_file, 'r', encoding='utf-8') as f:
         cookies = json.load(f)
 
+    # 写入Netscape格式
     with open(output_file, 'w', encoding='utf-8') as f:
+        # 写入Netscape cookie文件头
         f.write("# Netscape HTTP Cookie File\n")
-        f.write("# https://www.netscape.com\n")
-        f.write("# This is a generated file!\n")
+        f.write("# https://curl.haxx.se/rfc/cookie_spec.html\n")
+        f.write("# This is a generated file!  Do not edit.\n\n")
 
         for cookie in cookies:
-            for c in cookie.get('cookies', []):
-                domain = c['domain']
-                path = c.get('path', '/')
-                expiry = c['expiry']
-                secure = 'TRUE' if c.get('secure', False) else 'FALSE'
-                httponly = 'TRUE' if c.get('httpOnly', False) else 'FALSE'
-                name = c['name']
-                value = c['value']
+            domain = cookie.get('domain', '')
+            domain_flag = "TRUE" if cookie.get('hostOnly', False) else "FALSE"
+            path = cookie.get('path', '/')
+            secure = "TRUE" if cookie.get('secure', False) else "FALSE"
+            expiry = int(cookie.get('expirationDate', 0))
+            name = cookie.get('name', '')
+            value = cookie.get('value', '')
 
-                f.write(f"{domain}\tTRUE\t{path}\t{secure}\t{expiry}\t{name}\t{value}\n")
+            # 格式: domain domain_flag path secure expiry name value
+            line = f"{domain}\t{domain_flag}\t{path}\t{secure}\t{expiry}\t{name}\t{value}\n"
+            f.write(line)
 
-    print(f"Cookies successfully converted to Netscape format in {output_file}")
+    print(f"Cookie文件已转换: {output_file}")
     
 
 # 使用示例:
