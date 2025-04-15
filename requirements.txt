@@ -40,3 +40,4 @@ wsproto==1.2.0
 fake_useragent
 pyexecjs
 loguru
+lxml

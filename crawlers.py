@@ -658,8 +658,8 @@ if __name__ == '__main__':
     # crawler.tiktok_search_video('beautiful girls', offset=0)
     # crawler.tiktok_search_video_remote('beautiful girls')
     # crawler.tiktok_video_info('7462168953985486098')
-    crawler.tiktok_crawler('love')
-    # crawler.youtube_crawler('funny')
+    #crawler.tiktok_crawler('love')
+    crawler.youtube_crawler('funny')
 
     # crawler.douyin_search_video('今日热点')
     # crawler.douyin_crawler('小姐姐短视频')
