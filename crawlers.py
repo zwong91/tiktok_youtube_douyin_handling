@@ -13,9 +13,6 @@ import os
 import undetected_chromedriver as uc
 import douyin_video
 
-from pytube import YouTube
-
-
 config = configparser.ConfigParser()
 config.read('config.ini', encoding='utf-8')
 crawlers_config = config['Crawlers']
@@ -494,34 +491,50 @@ class Crawlers(object):
             raise Exception(f'youtube: 更新: {search_keywords} 失败!!! 请检查接口')
 
     def youtube_video_info(self, video_id):
-        """
-        使用pytube获取YouTube视频信息
-        """
-        try:
-            # 构建YouTube视频URL
-            url = f'https://www.youtube.com/watch?v={video_id}'
-            yt = YouTube(url)
-
-            # 获取最高质量的视频流
-            video_stream = yt.streams.filter(adaptive=True, file_extension='mp4', type='video').order_by('resolution').desc().first()
-            
-            # 获取音频流
-            audio_stream = yt.streams.filter(only_audio=True).order_by('abr').desc().first()
-
-            if video_stream and audio_stream:
-                return {
-                    'video_url': video_stream.url,
-                    'audio_url': audio_stream.url,
-                    'title': yt.title,
-                    'author': yt.author,
-                    'length': yt.length
-                }
+        headers = {
+            'cookie': 'VISITOR_INFO1_LIVE=9qZVrzB27uI; PREF=f4=4000000&tz=Asia.Shanghai; _ga=GA1.2.621834420.1648121145; _gcl_au=1.1.1853038046.1648121145; NID=511=Zc1APdmEbCD-iqVNVgI_vD_0S3LVI3XSfl-wUZEvvMU2MLePFKsQCaKUlUtchHSg-kWEVMGOhWUbxpQMwHeIuLjhxaslwniMh1OsjVfmOeTfhpwcRYpMgqpZtNQ7qQApY21xEObCvIez6DCMbjRhRQ5P7siOD3X87QX0CFyUxmY; OTZ=6430350_24_24__24_; GPS=1; YSC=0E115KqM_-I; GOOGLE_ABUSE_EXEMPTION=ID=d02004902c3d0f4d:TM=1648620854:C=r:IP=47.57.243.77-:S=YmZXPW7dxbu83bDuauEpXpE; CONSISTENCY=AGDxDeNysJ2boEmzRP4v6cwgg4NsdN4-FYQKHCGhA0AeW1QjFIU1Ejq1j8l6lwAc6c-pYTJiSaQItZ1M6QeI1pQ3wictnWXTOZ6_y8EKlt0Y_JdakwW6srR39-NLuPgSgXrXwtS0XTUGXpdnt4k3JjQ',
+            'referer': 'https://www.youtube.com/results?search_query=jk%E7%BE%8E%E5%A5%B3',
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.84 Safari/537.36'
+        }
+        url = f'https://www.youtube.com/watch?v={video_id}'
+        response = self.simple_get(url=url, headers=headers)
+        if response is not None:
+            json_str = re.findall('var ytInitialPlayerResponse = (.*?);var', response)[0]
+            json_data = json.loads(json_str)
+            video_url = None
+            audio_url = None
+            new_list = []
+            for one in json_data['streamingData']['adaptiveFormats']:
+                if 'url' in one.keys():
+                    new_list.append(one)
+                else:
+                    continue
+            if len(new_list) > 0:
+                video_url = new_list[0]['url']
+                for data in new_list:
+                    if 'height' in data.keys():
+                        if data['height'] == 1080:
+                            video_url = data['url']
+                            break
+                        else:
+                            continue
+                    else:
+                        continue
+                audio_url = new_list[-1]['url']
+                for i in range(len(new_list) - 1, -1, -1):
+                    if 'audio' in new_list[i]['mimeType'] and 'LOW' in new_list[i]['audioQuality']:
+                        audio_url = new_list[i]['url']
+                        break
+                    else:
+                        continue
+                print(f'youtube video_url: {video_url}\naudio_url: {audio_url}')
+                video_streaming_data = json_data['streamingData']['adaptiveFormats']
+                return {'video_url': video_url, 'audio_url': audio_url}
             else:
-                print(f'无法获取 {video_id} 的视频/音频流')
-                return {'video_url': None, 'audio_url': None}
-                
-        except Exception as e:
-            print(f'获取YouTube视频信息失败: {str(e)}')
+                return {'video_url': video_url, 'audio_url': audio_url}
+
+        else:
+            print(f'获取 {video_id} 详情失败!!!')
             return {'video_url': None, 'audio_url': None}
 
     def douyin_search_video(self, search_keywords, offset=0):
