@@ -29,7 +29,7 @@
     },
     {
         "domain": ".youtube.com",
-        "expirationDate": 1776243160.127174,
+        "expirationDate": 1776244517.017803,
         "hostOnly": false,
         "httpOnly": true,
         "name": "__Secure-1PSIDCC",
@@ -38,12 +38,12 @@
         "secure": true,
         "session": false,
         "storeId": "0",
-        "value": "AKEyXzXW7linKfzQVPUwNGVUeULQD_cWjAQDkHSfmqXV6rhNPkV1KBDfXH2lSIVDvxTKzBHGJA",
+        "value": "AKEyXzWZYji3_T-H1rtF3G-_AjKKSIHZAGafx3DkW7Xj9zLg9_M6qczrocszhXFYmVNPW7cbdw",
         "id": 3
     },
     {
         "domain": ".youtube.com",
-        "expirationDate": 1776243040.281864,
+        "expirationDate": 1776244243.573172,
         "hostOnly": false,
         "httpOnly": true,
         "name": "__Secure-1PSIDTS",
@@ -52,7 +52,7 @@
         "secure": true,
         "session": false,
         "storeId": "0",
-        "value": "sidts-CjEB7pHptVSJrzr8UVVhpCI3ymM3O6PlqfhxVBAYmAa_KRyGC5HOfshDbZ7x6fEwDSiYEAA",
+        "value": "sidts-CjEB7pHptZk_WpDgQWihIqbBnqZd-4Oj_XHAj9s-sd_72tjnfSWWjKTHeT1icbRQ6zdlEAA",
         "id": 4
     },
     {
@@ -85,7 +85,7 @@
     },
     {
         "domain": ".youtube.com",
-        "expirationDate": 1776243160.127358,
+        "expirationDate": 1776244517.018306,
         "hostOnly": false,
         "httpOnly": true,
         "name": "__Secure-3PSIDCC",
@@ -94,12 +94,12 @@
         "secure": true,
         "session": false,
         "storeId": "0",
-        "value": "AKEyXzUgSOTiO_im-rxKm3u-yE71xBlwvj5jzy_xp0ifT5f73jK4rodqQwH-KfBVSHYqR1XANyI",
+        "value": "AKEyXzV1JwhxltCDHSUZhTAvMWqnqlSryvPTD0lBOGD-uqKWK08FBT-MtSJIUE_DDrdORq2AFik",
         "id": 7
     },
     {
         "domain": ".youtube.com",
-        "expirationDate": 1776243040.282435,
+        "expirationDate": 1776244243.573515,
         "hostOnly": false,
         "httpOnly": true,
         "name": "__Secure-3PSIDTS",
@@ -108,12 +108,12 @@
         "secure": true,
         "session": false,
         "storeId": "0",
-        "value": "sidts-CjEB7pHptVSJrzr8UVVhpCI3ymM3O6PlqfhxVBAYmAa_KRyGC5HOfshDbZ7x6fEwDSiYEAA",
+        "value": "sidts-CjEB7pHptZk_WpDgQWihIqbBnqZd-4Oj_XHAj9s-sd_72tjnfSWWjKTHeT1icbRQ6zdlEAA",
         "id": 8
     },
     {
         "domain": ".youtube.com",
-        "expirationDate": 1774941897.150657,
+        "expirationDate": 1779268342.158189,
         "hostOnly": false,
         "httpOnly": false,
         "name": "_ga",
@@ -127,7 +127,7 @@
     },
     {
         "domain": ".youtube.com",
-        "expirationDate": 1774941900.373373,
+        "expirationDate": 1779268372.000278,
         "hostOnly": false,
         "httpOnly": false,
         "name": "_ga_VCGEPY40VB",
@@ -136,7 +136,7 @@
         "secure": false,
         "session": false,
         "storeId": "0",
-        "value": "GS1.1.1740381872.1.1.1740381900.32.0.0",
+        "value": "GS1.1.1744708296.2.1.1744708371.60.0.0",
         "id": 10
     },
     {
@@ -169,7 +169,7 @@
     },
     {
         "domain": ".youtube.com",
-        "expirationDate": 1744707759,
+        "expirationDate": 1744709118,
         "hostOnly": false,
         "httpOnly": false,
         "name": "CONSISTENCY",
@@ -178,7 +178,7 @@
         "secure": true,
         "session": false,
         "storeId": "0",
-        "value": "AKreu9vPyhS-7I5it7OqE746FeLJn5vL3yRTv7n33L27LcFjoZBIm7xIrtmogfmmkvUkRKIOrvx-wPh3AmsBIk-823aimMER2Q-Q1MneGNq2s0WqIjK-E_FbQ2Anq9-y8s18EIVxqm1RzwTGHryZHn3E",
+        "value": "AKreu9vtrJrzVxcYgcaQtsK3dkq5sIwxh6LxnPa_jOPa-aiZbZzxdf11e281FOE46ShiYxKKSm1nSQHNuRL0XIBv0mN9gsXhxz1rJztXKv2dyvZ52X4D97tKZOMMEkn9ieiecHc11xAQ5Mh1oBxDXL35",
         "id": 13
     },
     {
@@ -225,7 +225,7 @@
     },
     {
         "domain": ".youtube.com",
-        "expirationDate": 1779267159.010281,
+        "expirationDate": 1779268483.533385,
         "hostOnly": false,
         "httpOnly": false,
         "name": "PREF",
@@ -234,7 +234,7 @@
         "secure": true,
         "session": false,
         "storeId": "0",
-        "value": "f7=100&tz=Asia.Shanghai&f5=20000",
+        "value": "f7=d00&tz=Asia.Shanghai&f5=20000",
         "id": 17
     },
     {
@@ -267,7 +267,7 @@
     },
     {
         "domain": ".youtube.com",
-        "expirationDate": 1776243160.126813,
+        "expirationDate": 1776244517.017144,
         "hostOnly": false,
         "httpOnly": false,
         "name": "SIDCC",
@@ -276,7 +276,7 @@
         "secure": false,
         "session": false,
         "storeId": "0",
-        "value": "AKEyXzXxfwh_ggqyuvlxBnRmbMo5yKBX_yfhce9zV8GhGPc4ld5pOtkAnDWa3VgzttRNH27PhfA",
+        "value": "AKEyXzWP5WqrQ0eD2i_vp-06vgpcqhjTuiBk1FMj8irllsIZh8dJ5R9uUaSGOgyCUjbQ4wN6xwY",
         "id": 20
     },
     {
@@ -295,24 +295,24 @@
     },
     {
         "domain": ".youtube.com",
-        "expirationDate": 1744707163,
+        "expirationDate": 1744708520,
         "hostOnly": false,
         "httpOnly": false,
-        "name": "ST-hcbf8d",
+        "name": "ST-1b",
         "path": "/",
         "sameSite": "unspecified",
         "secure": false,
         "session": false,
         "storeId": "0",
-        "value": "session_logininfo=AFmmF2swRQIgFwhajHuKmDmRQmOcahVcbFHPXjC8jN64ynZnpANXkNQCIQChfpOQ0NwAcj3KdpC35D06HydPPAZcYNubOHfFuw0bpg%3AQUQ3MjNmelRTTFVjb0drSDg1M01ybGtRQXhmcW9TSVRPTkVkNnhySElndExtcGRTNVoxVWpUaUo2TnRoUDlVRzdfcU9JOFM2Z0RwWVZFU2hQMjlDVDVzSHZRNDQ3aDZRajB3aWJHcEdabWo1Slk5dkw3RVR5cTVMUi1UQ2oyZC01SW56VkZ0aWZxLUVzT2NJZGotSWFicTFDc1RwXzMyMUd3",
+        "value": "disableCache=true&itct=CB8QsV4iEwja2bbW2dmMAxXyMXsHHTOyCKQ%3D&csn=vZ5odyEC0aO_rAWf&session_logininfo=AFmmF2swRQIgFwhajHuKmDmRQmOcahVcbFHPXjC8jN64ynZnpANXkNQCIQChfpOQ0NwAcj3KdpC35D06HydPPAZcYNubOHfFuw0bpg%3AQUQ3MjNmelRTTFVjb0drSDg1M01ybGtRQXhmcW9TSVRPTkVkNnhySElndExtcGRTNVoxVWpUaUo2TnRoUDlVRzdfcU9JOFM2Z0RwWVZFU2hQMjlDVDVzSHZRNDQ3aDZRajB3aWJHcEdabWo1Slk5dkw3RVR5cTVMUi1UQ2oyZC01SW56VkZ0aWZxLUVzT2NJZGotSWFicTFDc1RwXzMyMUd3&endpoint=%7B%22clickTrackingParams%22%3A%22CB8QsV4iEwja2bbW2dmMAxXyMXsHHTOyCKQ%3D%22%2C%22commandMetadata%22%3A%7B%22webCommandMetadata%22%3A%7B%22url%22%3A%22%2F%22%2C%22webPageType%22%3A%22WEB_PAGE_TYPE_BROWSE%22%2C%22rootVe%22%3A3854%2C%22apiUrl%22%3A%22%2Fyoutubei%2Fv1%2Fbrowse%22%7D%7D%2C%22browseEndpoint%22%3A%7B%22browseId%22%3A%22FEwhat_to_watch%22%7D%7D",
         "id": 22
     },
     {
         "domain": ".youtube.com",
-        "expirationDate": 1744707163,
+        "expirationDate": 1744708522,
         "hostOnly": false,
         "httpOnly": false,
-        "name": "ST-tladcw",
+        "name": "ST-hcbf8d",
         "path": "/",
         "sameSite": "unspecified",
         "secure": false,
@@ -323,10 +323,10 @@
     },
     {
         "domain": ".youtube.com",
-        "expirationDate": 1744707164,
+        "expirationDate": 1744708520,
         "hostOnly": false,
         "httpOnly": false,
-        "name": "ST-xuwub9",
+        "name": "ST-yve142",
         "path": "/",
         "sameSite": "unspecified",
         "secure": false,
