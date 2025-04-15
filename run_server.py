@@ -172,11 +172,14 @@ def download_video():
         cmd = [
             'yt-dlp',
             '--cookies', 'cookies.txt',
+            '--user-agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+            '--format', 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best',
+            '--force-ipv4',
+            '--geo-bypass',
             '--output', file_path,
             video_url
         ]
         
-        # 执行命令
         process = subprocess.Popen(
             cmd,
             stdout=subprocess.PIPE,
@@ -184,7 +187,6 @@ def download_video():
             universal_newlines=True
         )
         
-        # 获取输出
         stdout, stderr = process.communicate()
         
         if process.returncode == 0:
